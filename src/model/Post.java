@@ -37,8 +37,20 @@ public class Post {
 	}
 	
 	//Konstruktori
+	public Post() {
+		setMsg("Default message");
+		//ta ka datetime inicializets, nav jaizsauc konstruktora
+		//ta ka countoflikes  mainigais inicializets, nav jaizsauc
+	}
 	
+	public Post(String inputMsg) {
+		setMsg("Default message");
+	}	
 	
 	//ToString funkcija
-
+	@Override
+	public String toString() {
+		String result = msg + "( " + dateTime + " )" + countOfLikes + " likes.";
+		return result;
+	}
 }
