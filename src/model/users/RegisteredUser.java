@@ -1,8 +1,10 @@
 package model.users;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import service.IPostPublish;
+import service.MainService;
 
 public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 	//Mainigie
@@ -36,7 +38,7 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 		try {
 			MessageDigest  md = MessageDigest.getInstance("MD5");
 			md.update(inputPassword.getBytes());
-			password = md.digest().toString();
+			password = new String(md.digest());
 		}
 		catch (Exception e){
 			password = "0000";
@@ -63,6 +65,24 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 	public String toString() {
 		String result = id + ": " + userName + " " + password;
 		return result;
-	}	
+	}
+	
+	//citas funkcijas
+	public boolean login(String inputUsername, String inputPassword) throws NoSuchAlgorithmException {
+		for(GuestUser tempU : MainService.getSaraksts()) {
+			if(tempU instanceof RegisteredUser) {//vai lietotajs nav registrets lietotajs
+				RegisteredUser tempR = (RegisteredUser) tempU;
+				
+				MessageDigest  md = MessageDigest.getInstance("MD5");
+				md.update(inputPassword.getBytes());
+				String inputPasswordEncoded = new String(md.digest());
+				
+				if(tempR.getUserName().equals(inputUsername) && tempR.getPassword().equals(inputPasswordEncoded)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 }

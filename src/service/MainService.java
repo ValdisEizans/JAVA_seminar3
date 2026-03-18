@@ -22,16 +22,29 @@ public class MainService {
 		PrivateUser priv2 = new PrivateUser("Janis","J@nis1234");
 		saraksts.add(priv1);
 		saraksts.add(priv2);
-
-		//Izdrukat visus lietotajus.
-		System.out.println(saraksts);
-		
-		//Katram private 2 postus un izdrukat
-		priv1.createAndPublishPost("Sveiciens JAVA nodarbiba", PostType.publicType);
-		priv1.createAndPublishPost("Man sodien dzimsanas diena!", PostType.privateType);
+		try {
+			if(priv1.login("valdis", "V@ldis7865")) {
+				//Izdrukat visus lietotajus.
+				System.out.println(saraksts);
+				
+				//Katram private 2 postus un izdrukat
+				priv1.createAndPublishPost("Sveiciens JAVA nodarbiba", PostType.publicType);
+				priv1.createAndPublishPost("Man sodien dzimsanas diena!", PostType.privateType);
+			}
+			else {
+				System.out.println("Nav pareizs lietotajvards vai parole!");
+			}
+		}
+		catch (Exception e) {
+			
+		}
 		System.out.println("-------------------------------------------------------");
 		System.out.println(saraksts);
 
 	}
 
+	public static ArrayList<GuestUser> getSaraksts() {
+		return saraksts;
+	}
+	
 }
