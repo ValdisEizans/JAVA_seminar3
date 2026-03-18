@@ -44,10 +44,23 @@ public class RegisteredUser extends GuestUser{
 	
 	//Konstruktori
 	
+	public RegisteredUser() {
+		super(); //izsauc GuestUser bezargumenta konstruktors
+		setUserName("valdis.eizans");
+		setPassword("V@ldis2026");
+		
+	}
+	
+	public RegisteredUser(String inputUserName, String inputPassword) {
+		super(); //izsauc GuestUser bezargumenta konstruktors
+		setUserName(inputUserName);
+		setPassword(inputPassword);
+	}
+	
 	//toString funkcija
-	
-	
-	
-	
+	public String toString() {
+		String result = id + ": " + userName + " " + password;
+		return result;
+	}	
 
 }
