@@ -44,7 +44,7 @@ public class Post {
 	}
 	
 	public Post(String inputMsg) {
-		setMsg("Default message");
+		setMsg(inputMsg);
 	}	
 	
 	//ToString funkcija

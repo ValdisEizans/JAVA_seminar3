@@ -37,7 +37,7 @@ public class PrivateUser extends RegisteredUser{
 	
 	//toString funkcija
 	public String toString() {//izsaucas Reguser toString funkcija
-		String result = super.toString() + "Sludinajumi:\n -> " + allPrivatePosts + "\n ->" + allPublicPosts + ";\n Sekotaji -> " + allMyFollowers;
+		String result = super.toString() + ";\n Sludinajumi:\n -> " + allPrivatePosts + "\n -> " + allPublicPosts + ";\n Sekotaji -> " + allMyFollowers + "\n";
 		return result;
 	}
 	
