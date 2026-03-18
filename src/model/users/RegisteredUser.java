@@ -5,7 +5,6 @@ import java.security.MessageDigest;
 public class RegisteredUser extends GuestUser{
 	//Mainigie
 	private String userName;
-	private String title; //privatiem - vards un uzvards, bizensa - kompanijas nosaukums
 	private String password;
 
 	
@@ -13,10 +12,6 @@ public class RegisteredUser extends GuestUser{
 	public String getUserName() {
 		return userName;
 	}
-	public String getTitle() {
-		return title;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -30,19 +25,19 @@ public class RegisteredUser extends GuestUser{
 			userName = "DefaultUser";
 		}
 	}
-	
-	public void setTitle(String title) {
-		
-	}	
 
 	public void setPassword(String inputPassword) {
+
+		if(inputPassword != null && !inputPassword.isEmpty() && inputPassword.matches("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")) {
+			
+		}
 		try {
 			MessageDigest  md = MessageDigest.getInstance("MD5");
 			md.update(inputPassword.getBytes());
 			password = md.digest().toString();
 		}
 		catch (Exception e){
-			
+			password = "0000";
 		}
 
 	}
