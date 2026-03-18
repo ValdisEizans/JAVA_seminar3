@@ -23,13 +23,13 @@ public class MainService {
 		saraksts.add(priv1);
 		saraksts.add(priv2);
 		try {
-			if(priv1.login("valdis", "V@ldis7865")) {
+			if(priv2.login("Janis", "J@nis1234")) {
 				//Izdrukat visus lietotajus.
 				System.out.println(saraksts);
 				
 				//Katram private 2 postus un izdrukat
-				priv1.createAndPublishPost("Sveiciens JAVA nodarbiba", PostType.publicType);
-				priv1.createAndPublishPost("Man sodien dzimsanas diena!", PostType.privateType);
+				priv2.createAndPublishPost("Sveiciens JAVA nodarbiba", PostType.publicType);
+				priv2.createAndPublishPost("Man sodien dzimsanas diena!", PostType.privateType);
 			}
 			else {
 				System.out.println("Nav pareizs lietotajvards vai parole!");
