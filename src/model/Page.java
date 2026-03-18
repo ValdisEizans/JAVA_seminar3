@@ -46,9 +46,20 @@ public class Page extends PrivateUser{
 	}
 	
 	//Konstruktori
-
-	//toString
+	public Page() {
+		setTitle("Default lapa");
+		setDescription("Lapa par neko");
+	}
+	public Page(String inputTitle, String inputDescription) {
+		setTitle(inputTitle);
+		setDescription(inputDescription);	
+	}
 	
+	//toString
+	public String toString() {
+		String result = title + " " + description + "; sludinajumi\n ->  " + allPostsInPage + "\n sekotaji -> " + allPageFollowers + "\n";
+		return result;
+	}	
 	
 
 }
